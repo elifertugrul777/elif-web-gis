@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#191c19" />
+    <meta
+      name="description"
+      content="Elif Ertuğrul — Geomatics Engineering student. Based in Istanbul, studying in Ankara. A personal atlas of places and possibilities."
+    />
+    <title>Ways of Living | Elif Ertuğrul</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="vendor/ol.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="Elif Ertuğrul home"
+        ><span class="brand-letter">e<span>.</span></span
+        ><span class="brand-name"
+          >ELIF ERTUĞRUL<br /><small>PERSONAL ATLAS</small></span
+        ></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="index.html">About me</a
+        ><a href="atlas.html" aria-current="page">My atlas <span>↗</span></a>
+      </nav>
+    </header>
+    <main id="main" class="wrap map-main words-page">
+      <nav class="atlas-switcher" aria-label="Atlas navigation">
+        <a href="atlas.html">← All atlases</a>
+        <div>
+          <a href="travel.html">Places &amp; feelings</a
+          ><a href="map2.html" aria-current="page">Ways of living</a>
+        </div>
+      </nav>
+      <div class="map-page-heading">
+        <div>
+          <div class="section-index">MY ATLAS / 02 — WAYS OF LIVING</div>
+          <h1>Ways of <span class="serif">living.</span></h1>
+          <p>Different words. Different ways to see life.</p>
+        </div>
+        <button class="button outline" id="world-reset">View all locations ↗</button>
+      </div>
+      <div class="words-intro">
+        39 words, sayings and philosophical reflections from across the world. Explore
+        their meanings, their histories and the places connected to them.
+      </div>
+      <div class="words-controls">
+        <label
+          >Search<input
+            id="words-search"
+            type="search"
+            placeholder="A word, feeling, city…"
+        /></label>
+        <label
+          >Theme<select id="words-theme">
+            <option value="all">All themes</option>
+          </select></label
+        >
+        <label
+          >Language<select id="words-language">
+            <option value="all">All languages</option>
+          </select></label
+        >
+        <label
+          >Format<select id="words-kind">
+            <option value="all">Words &amp; phrases</option>
+          </select></label
+        >
+      </div>
+      <div class="world-toolbar">
+        <span id="words-count" role="status"></span
+        ><span id="world-coordinates">Choose an idea from the list or map.</span>
+      </div>
+      <div class="atlas-layout words-layout">
+        <aside class="places-panel">
+          <div class="panel-title"><h2>Ideas to explore</h2></div>
+          <div id="words-list" class="place-list"></div>
+        </aside>
+        <div class="map-shell">
+          <div
+            id="world-map"
+            class="map-canvas"
+            aria-label="OpenLayers map of words and ideas"
+          ></div>
+          <div class="map-status" id="words-zoom" role="status"></div>
+          <div class="map-error" id="world-error" hidden role="alert">
+            The map library could not load. You can still explore the words below.
+          </div>
+        </div>
+      </div>
+      <p class="basemap-note" id="basemap-note" role="status"></p>
+      <article id="word-detail" class="word-detail" aria-live="polite"></article>
+      <div class="words-evidence">
+        <strong>How to read this atlas</strong>
+        <p>
+          A pin may indicate an author’s birthplace, a documented teaching or writing
+          location, or a representative point for a language. Each card states which.
+          Dates describe the evidence available; a dictionary or publication date does not
+          necessarily identify when an expression was invented. Translations and
+          reflection prompts are editorial, not extra historical quotations.
+        </p>
+        <p>
+          Traditional expressions can be used in many countries. Representative city pins
+          do not claim exclusive ownership or a verified origin.
+        </p>
+      </div>
+    </main>
+    <footer class="footer">
+      <span>Elif Ertuğrul © 2026</span><span>ISTANBUL / ANKARA</span
+      ><a
+        href="https://github.com/elifertugrul777"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GitHub ↗</a
+      >
+    </footer>
+    <script src="js/site.js"></script>
+    <script src="js/world-data.js"></script>
+    <script src="vendor/ol.js"></script>
+    <script src="js/words-data.js"></script>
+    <script src="js/world.js"></script>
+  </body>
+</html>

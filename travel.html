@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#191c19" />
+    <meta
+      name="description"
+      content="Elif Ertuğrul — Geomatics Engineering student. Based in Istanbul, studying in Ankara. A personal atlas of places and possibilities."
+    />
+    <title>My atlas | Elif Ertuğrul</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="vendor/leaflet.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="Elif Ertuğrul home"
+        ><span class="brand-letter">e<span>.</span></span
+        ><span class="brand-name"
+          >ELIF ERTUĞRUL<br /><small>PERSONAL ATLAS</small></span
+        ></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="index.html">About me</a
+        ><a href="atlas.html" aria-current="page">My atlas <span>↗</span></a>
+      </nav>
+    </header>
+    <main id="main" class="wrap map-main">
+      <nav class="atlas-switcher" aria-label="Atlas navigation">
+        <a href="atlas.html">← All atlases</a>
+        <div>
+          <a href="travel.html" aria-current="page">Places &amp; feelings</a
+          ><a href="map2.html">Ways of living</a>
+        </div>
+      </nav>
+      <div class="map-page-heading">
+        <div>
+          <div class="section-index">MY ATLAS / 01 — PLACES &amp; FEELINGS</div>
+          <h1><span class="serif">Places &amp; feelings.</span></h1>
+          <p>Cities, restaurants, museums — and everything still on my list.</p>
+        </div>
+        <button class="button primary" id="add-place">Add a place +</button>
+      </div>
+      <p class="basemap-note" id="basemap-note" role="status"></p>
+      <div class="atlas-toolbar">
+        <div class="filters" role="group" aria-label="Filter places">
+          <button class="filter active" data-filter="all" aria-pressed="true">
+            All places</button
+          ><button class="filter" data-filter="visited" aria-pressed="false">
+            <i class="dot green"></i>Visited</button
+          ><button class="filter" data-filter="wishlist" aria-pressed="false">
+            <i class="dot gold"></i>Wishlist</button
+          ><button class="filter" data-filter="restaurant" aria-pressed="false">
+            Restaurants</button
+          ><button class="filter" data-filter="museum" aria-pressed="false">
+            Museums
+          </button>
+          <button class="filter" data-filter="nature" aria-pressed="false">Nature</button>
+        </div>
+        <button class="text-button" id="demo-toggle" aria-pressed="false">
+          Try example places
+        </button>
+      </div>
+      <div id="demo-notice" class="notice" hidden>
+        EXAMPLE MODE — these places illustrate the design; they are not Elif’s travel
+        history.
+      </div>
+      <div class="atlas-layout">
+        <aside class="places-panel">
+          <div class="panel-title">
+            <h2>Your places</h2>
+            <span id="place-count">0</span>
+          </div>
+          <label class="sr-only" for="place-search">Search places</label
+          ><input
+            id="place-search"
+            class="search"
+            type="search"
+            placeholder="Search a city or place…"
+          />
+          <div id="place-list" class="place-list" aria-live="polite"></div>
+          <div class="panel-foot">
+            <span id="visited-count">0 visited</span
+            ><span id="wish-count">0 wishlist</span>
+          </div>
+        </aside>
+        <div class="map-shell">
+          <div
+            id="travel-map"
+            class="map-canvas"
+            aria-label="Interactive personal travel map"
+          ></div>
+          <div class="map-status" id="zoom-status" role="status">
+            Zoom in to see place markers.
+          </div>
+          <button class="map-reset" id="reset-map" aria-label="Reset map to world view">
+            World view ↗
+          </button>
+          <div class="map-error" id="map-error" hidden role="alert">
+            The map could not load. Check your internet connection and refresh.
+          </div>
+        </div>
+      </div>
+      <div class="map-footnote">
+        <span><i class="dot green"></i> Visited <i class="dot gold"></i> Wishlist</span
+        ><span>Detail markers appear above zoom level 4.</span>
+      </div>
+      <div class="data-actions">
+        <p>Your additions are saved in this browser. Export them to keep a copy.</p>
+        <div>
+          <button class="text-button" id="export-places">Export places ↓</button
+          ><label class="text-button import-label"
+            >Import places ↑<input
+              type="file"
+              id="import-places"
+              accept="application/json,.json"
+              class="sr-only"
+          /></label>
+        </div>
+      </div>
+      <p class="form-message" id="import-message" role="status"></p>
+      <dialog id="place-dialog">
+        <form id="place-form">
+          <div class="dialog-top">
+            <div>
+              <div class="section-index">MAKE IT PERSONAL</div>
+              <h2>Add a place.</h2>
+            </div>
+            <button type="button" class="close-dialog" aria-label="Close dialog">
+              ×
+            </button>
+          </div>
+          <label
+            >Place name<input
+              name="name"
+              required
+              maxlength="100"
+              placeholder="City, museum or restaurant"
+          /></label>
+          <div class="form-row">
+            <label
+              >Category<select name="category">
+                <option value="city">City</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="museum">Museum</option>
+                <option value="nature">Nature</option>
+                <option value="other">Other</option>
+              </select></label
+            ><label
+              >Status<select name="status">
+                <option value="visited">Visited</option>
+                <option value="wishlist">Wishlist</option>
+              </select></label
+            >
+          </div>
+          <label
+            >Country or region<input name="region" maxlength="100" placeholder="Optional"
+          /></label>
+          <div class="form-row">
+            <label
+              >Latitude<input
+                name="lat"
+                id="place-lat"
+                type="number"
+                step="any"
+                min="-85"
+                max="85"
+                required
+                placeholder="e.g. 41.0082" /></label
+            ><label
+              >Longitude<input
+                name="lng"
+                id="place-lng"
+                type="number"
+                step="any"
+                min="-180"
+                max="180"
+                required
+                placeholder="e.g. 28.9784"
+            /></label>
+          </div>
+          <p class="small-note">
+            Tip: close this window and click the map to choose coordinates.
+          </p>
+          <label
+            >Your note<textarea
+              name="note"
+              rows="3"
+              maxlength="500"
+              placeholder="A memory, a favourite dish, or a reason to go…"
+            ></textarea>
+          </label>
+          <p id="save-message" class="form-message" role="status"></p>
+          <button class="button primary" type="submit">Save place ↗</button>
+        </form>
+      </dialog>
+    </main>
+    <footer class="footer">
+      <span>Elif Ertuğrul © 2026</span><span>ISTANBUL / ANKARA</span
+      ><a
+        href="https://github.com/elifertugrul777"
+        target="_blank"
+        rel="noopener noreferrer"
+        >GitHub ↗</a
+      >
+    </footer>
+    <script src="js/site.js"></script>
+    <script src="js/world-data.js"></script>
+    <script src="js/places.js"></script>
+    <script src="vendor/leaflet.js"></script>
+    <script src="js/travel.js"></script>
+  </body>
+</html>

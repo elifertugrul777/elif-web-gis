@@ -1,0 +1,29 @@
+ELIF — DUZELTILMIS TASARIM / V8
+
+1. ZIP -> sag tik -> Tumunu ayikla.
+2. Cikan tum dosyalari mevcut elif-web-gis klasorunun icine kopyala.
+3. Ayni isimli dosyalari degistir. Klasorun kendisini silme.
+4. BASLAT.bat dosyasina cift tikla: site tarayicida otomatik acilir.
+   Siyah pencere acik kalsin; kapatirsan yerel sunucu kapanir.
+   Alternatif: VS Code -> index.html -> sag tik -> Open with Live Server.
+5. index.html dosyasini dogrudan da acabilirsin.
+   Bu durumda yerel ulke sinirlari haritasi gorunur; sokak ayrintisi yoktur.
+6. VS Code dosyalarini kapatip yeniden ac. Kodlar artik duzenli satirlardadir.
+7. My atlas: Barcelona, Sevilla, Amsterdam, Eindhoven ve Paris gezilen sehirler olarak eklendi.
+   Ana sayfadaki 3D kure otomatik doner; fare ile de cevirebilirsin.
+8. Ekledigin yerler bu tarayicida kalir. Export places ile yedekle.
+
+Iki harita: travel.html (Leaflet), map2.html (OpenLayers).
+OSM sokak haritasi internet gerektirir; ulke haritasi dosyalarda yereldir.
+Logo gecici e. isaretidir. Ikinci harita: Ways of Living, 39 soz ve kelime.
+Arama ve tema/dil/tur filtreleri kullanilabilir. Noktalar yakinlasma 4 uzerinde gorunur.
+Listeden bir ifadeye basinca harita ilgili konuma gider. Kartta anlam, amac, tarih, konum baglantisi ve kaynak bulunur.
+Ayni konumdaki numarali noktalara tiklayip farkli ifadeler arasinda secim yapabilirsin.
+
+MY ATLAS: atlas.html iki haritayi tanitan secim sayfasidir.
+Ust menudeki My atlas burayi acar. Haritalarda sabit gecis menusu vardir.
+Yeni 8 kayit: Arapca sabir sozu, Misir Arapcasi kader sozu, Ma’at, Ptahhotep, Wabi-sabi, Kintsugi, Ubuntu ve Maori sozu.
+
+V8: Iyi ki kaldirildi. Ilk haritada 5 ziyaret + 19 wishlist hedefi var.
+Nature filtresi dag, orman ve doga hedeflerini gosterir. Wishlist filtresi gitmek istenenlerin tamamini gosterir.
+Palermo ve Taormina Sicilya bolgesi icinde; Virginia Richmond ve Shenandoah noktalariyla temsil edilir.
